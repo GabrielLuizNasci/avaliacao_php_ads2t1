@@ -5,6 +5,8 @@ namespace MODEL;
     {
         private ?int $id;
         private ?string $descricao;
+        private ?int $idAnimal;
+        private ?int $idVeterinario;
         private ?float $valor;
         private ?int $duracao;
 

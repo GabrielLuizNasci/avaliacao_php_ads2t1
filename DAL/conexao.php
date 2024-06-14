@@ -9,8 +9,7 @@
         private static $dbSenha = '';
         
         private static $cont = null;
-        public function __construct ()
-        {
+        public function __construct (){
             die ("A função init não é permitida");
         }
 
@@ -22,7 +21,6 @@
                 catch (\PDOException $exception){
                     die ($exception->getMessage());
                 }
-
             }
             return self::$cont;
         }

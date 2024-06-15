@@ -1,7 +1,7 @@
 <?php 
 namespace MODEL;
 
-    class Tutor 
+    class Dono 
     {
         private ?int $id;
         private ?string $nome;

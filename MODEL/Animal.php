@@ -2,19 +2,19 @@
     namespace MODEL;
 
     class Animal{
-        private ?int $id;
+        private ?int $idAnimal;
         private ?string $nome;
         private ?string $especie;
         private ?string $porte;
 
         public function __construct() { }
 
-        public function getId(){
-            return $this->id; 
+        public function getIdAnimal(){
+            return $this->idAnimal; 
         }
  
-        public function setId(int $id){
-           $this->id = $id;     
+        public function setIdAnimal(int $idAnimal){
+           $this->idAnimal = $idAnimal;     
         }
 
         public function getNome(){

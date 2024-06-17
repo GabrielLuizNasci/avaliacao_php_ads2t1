@@ -8,14 +8,14 @@
         public function Select()
         {
 
-            $sql = "Select * from animal;";
+            $sql = "Select * from dono;";
             $con = \DAL\Conexao::conectar();
             $registros = $con->query($sql);
             $con = \DAL\Conexao::desconectar();
 
             foreach ($registros as $linha){
                 $anml = new \MODEL\Animal();
-                $anml->setId($linha['id']);
+                $anml->setIdAnimal($linha['idAnimal']);
                 $anml->setNome($linha['nome']);
                 $anml->setEspecie($linha['especie']);
                 $anml->setPorte($linha['porte']);
@@ -25,7 +25,7 @@
 
         }
 
-        public function SelectById(int $id)
+        public function SelectById(int $idAnimal)
         {
             $sql = "Select * from animal where id=?;";
             $con = Conexao::conectar();
@@ -35,7 +35,7 @@
             Conexao::desconectar();
 
             $anml = new \MODEL\Animal();
-            $anml->setId($linha['id']);
+            $anml->setIdAnimal($linha['idAnimal']);
             $anml->setNome($linha['nome']);
             $anml->setEspecie($linha['especie']);
             $anml->setPorte($linha['porte']);
@@ -57,25 +57,26 @@
 
         public function Update (\MODEL\Animal $animal)
         {
-            $sql = "UPDATE animal SET nome = ?, especie = ?, porte =? WHERE id = ?;";
+            $sql = "UPDATE animal SET nome = ?, especie = ?, porte =? WHERE idAnimal = ?;";
 
             $con = Conexao::conectar();
             $query = $con-.prepare($sql);
-            $result = $query->execute(array($animal->getNome(), $animal->getEspecie(), $animal->getPorte, $animal->getId()));
+            $result = $query->execute(array($animal->getNome(), $animal->getEspecie(), $animal->getPorte(), $animal->getIdAnimal()));
             $con = Conexao::desconectar();
 
             return $result;
         }
 
-        public function Delete($id)
+        public function Delete($idAnimal)
         {
-            $sql = "delete from animal WHERE id = ?;";
+            $sql = "delete from animal WHERE idAnimal = ?;";
 
             $con = Conexao::conectar();
             $query = $con->prepare($sql);
-            $result = $query->execute(array( $id ));
+            $result = $query->execute(array( $idAnimal ));
             $con = Conexao::desconectar();
 
             return $result;
         }
     }
+?>

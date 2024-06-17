@@ -3,7 +3,7 @@ namespace MODEL;
 
     class Dono 
     {
-        private ?int $id;
+        private ?int $idDono;
         private ?string $nome;
         private ?string $sexo;
         private ?int $dataNasc;
@@ -13,14 +13,14 @@ namespace MODEL;
         {
         }
 
-        public function getID()
+        public function getIdDono()
         {
-            return $this->id;
+            return $this->idDono;
         }
 
-        public function setId(int $id)
+        public function setIdDono(int $idDono)
         {
-            $this->id = $id;
+            $this->idDono = $idDono;
         }
 
         public function getNome()

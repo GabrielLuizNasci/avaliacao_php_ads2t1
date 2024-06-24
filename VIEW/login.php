@@ -4,10 +4,6 @@
    $usuario = $_POST['usuario']; 
    $senha = $_POST['senha'];
 
-   //echo "Usuario: " . $usuario . "</br></br>"; 
-    echo "Senha: " . $senha . "  -  ".  md5($senha) . " <br/><br/>";
-    // echo "Senha: " . $senha . "  -  ".  sha1($senha) . " <br/><br/>";
-
     $sql = "Select * from usuario where usuario=?;";
     $con = \dal\Conexao::conectar(); 
     $query = $con->prepare($sql);

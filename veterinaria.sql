@@ -22,9 +22,11 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
+CREATE DATABASE IF NOT EXISTS `veterinaria` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `veterinaria`;
 
 --
--- Estrutura para tabela `servico`
+-------- Estrutura para tabela `servico` ------------
 --
 
 CREATE TABLE `servico` (
@@ -39,6 +41,27 @@ CREATE TABLE `servico` (
 --
 -- Índices para tabelas despejadas
 --
+
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(10) NOT NULL,
+  `senha` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `usuario`, `senha`) VALUES
+(1, 'admin', 'abacate141'),
 
 --
 -- Índices de tabela `servico`

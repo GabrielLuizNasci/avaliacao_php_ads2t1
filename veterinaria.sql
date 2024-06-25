@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/06/2024 às 05:13
+-- Tempo de geração: 25/06/2024 às 01:04
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,13 +20,41 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `veterinaria`
 --
-
--- --------------------------------------------------------
 CREATE DATABASE IF NOT EXISTS `veterinaria` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `veterinaria`;
 
+-- --------------------------------------------------------
+
 --
--------- Estrutura para tabela `servico` ------------
+-- Estrutura para tabela `animal`
+--
+
+CREATE TABLE `animal` (
+  `id` int(5) NOT NULL,
+  `idDono` int(5) NOT NULL,
+  `nome` varchar(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `especie` varchar(25) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `porte` varchar(25) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `dono`
+--
+
+CREATE TABLE `dono` (
+  `id` int(5) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `sexo` varchar(25) NOT NULL,
+  `datanascimento` date DEFAULT NULL,
+  `cpf` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `servico`
 --
 
 CREATE TABLE `servico` (
@@ -38,18 +66,12 @@ CREATE TABLE `servico` (
   `duracao` timestamp(4) NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Índices para tabelas despejadas
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estrutura para tabela `usuario`
 --
 
-DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `usuario` varchar(10) NOT NULL,
@@ -61,7 +83,39 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `usuario`, `senha`) VALUES
-(1, 'admin', 'abacate141'),
+(1, 'admin', 'abacate141');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `veterinario`
+--
+
+CREATE TABLE `veterinario` (
+  `id` int(5) NOT NULL,
+  `nome` varchar(40) NOT NULL,
+  `cpf` int(11) NOT NULL,
+  `sexo` varchar(25) DEFAULT NULL,
+  `datanascimento` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `animal`
+--
+ALTER TABLE `animal`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_animal_dono` (`idDono`);
+
+--
+-- Índices de tabela `dono`
+--
+ALTER TABLE `dono`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
 -- Índices de tabela `servico`
@@ -72,8 +126,33 @@ ALTER TABLE `servico`
   ADD UNIQUE KEY `idVet` (`idVeterinario`);
 
 --
+-- Índices de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `veterinario`
+--
+ALTER TABLE `veterinario`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `cpf` (`cpf`);
+
+--
 -- AUTO_INCREMENT para tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `animal`
+--
+ALTER TABLE `animal`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `dono`
+--
+ALTER TABLE `dono`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `servico`
@@ -82,8 +161,26 @@ ALTER TABLE `servico`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `veterinario`
+--
+ALTER TABLE `veterinario`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+
+--
 -- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `animal`
+--
+ALTER TABLE `animal`
+  ADD CONSTRAINT `fk_animal_dono` FOREIGN KEY (`idDono`) REFERENCES `dono` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Restrições para tabelas `servico`

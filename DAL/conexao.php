@@ -15,16 +15,13 @@
             die ("A função init não é permitida");
         }
 
-        public static function conectar()
-        {
+        public static function conectar(){
             if (self::$cont == null)
             {
-                try
-                {
+                try{
                     self::$cont = new  \PDO("mysql:host=". self::$dbHost .";dbname=" . self::$dbNome, self::$dbUsuario, self::$dbSenha);
                 }
-                catch (\PDOException $exception)
-                {
+                catch (\PDOException $exception){
                     die ($exception->getMessage());
                 }
             }

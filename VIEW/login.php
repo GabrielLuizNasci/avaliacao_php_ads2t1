@@ -1,5 +1,5 @@
 <?php 
-   include_once 'D:\xampp\htdocs\avaliacao_php_ads2t1\DAL\conexao.php'; 
+   include_once '../DAL/conexao.php'; 
 
    $usuario = $_POST['usuario']; 
    $senha = $_POST['senha'];
@@ -21,6 +21,7 @@
        $_SESSION['login'] = $usuario ;
        //$_SESSION['nivel'] = $linha['nivel']; 
        header("location:menu.php"); 
+       exit();
    }
    else header("location:index.php"); 
 

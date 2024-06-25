@@ -18,36 +18,33 @@
 </head>
 
 <body>
-    <div class="container login-container">
-      <div class="row">
-        <div class=" ads">
-          <img src="./assets/Veterinaria_logo.png" alt="profile_img" >
-        </div>
-        <div class="col-md-6 login-form">
-            <div class="profile-img">
-            
-            </div>
-            <h3>Login</h3>
-            <form method="POST" action="login.php">
-                <div class="form-group">
-                <input type="text" class="form-control" name="usuario" placeholder="Usuário">
-                </div>
-                <div class="form-group">
-                <input type="password" class="form-control" name="senha" placeholder="Senha">
-                </div>
-                <div class="form-group">
-                <button type="submit" name="action" class="btn btn-primary btn-lg btn-block">Fazer Login</button>
-                </div>
-                <div class="form-group forget-password">
-                    <a href="#">Forget Password</a>
-                </div>
-            </form>
-        </div>
+  <div class="container login-container">
+    <div class="row">
+      <div class="col-md-6 ads">
+        <img src="./assets/Veterinaria_logo.png" alt="profile_img">
+      </div>
+      <div class="col-md-6 login-form">
+        <br></br>
+        <br></br>
+        <h3>Login</h3>
+        <form method="POST" action="login.php">
+          <div class="form-group">
+            <input type="text" class="form-control" name="usuario" placeholder="Usuário">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" name="senha" placeholder="Senha">
+          </div>
+          <div class="form-group">
+            <button type="submit" name="action" class="btn btn-primary btn-lg btn-block">Fazer Login</button>
+          </div>
+          <div class="form-group forget-password">
+            <a href="#">Forget Password</a>
+          </div>
+        </form>
       </div>
     </div>
+  </div>
 
-    <?php include_once 'rodape.php' ?>
-
+  <?php include_once 'rodape.php' ?>
 <body>
-
 </html>

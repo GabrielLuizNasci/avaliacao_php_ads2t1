@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 25/06/2024 às 01:04
+-- Tempo de geração: 26/06/2024 às 01:11
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -37,6 +37,13 @@ CREATE TABLE `animal` (
   `porte` varchar(25) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `animal`
+--
+
+INSERT INTO `animal` (`id`, `idDono`, `nome`, `especie`, `porte`) VALUES
+(1, 2, 'Marley', 'Cavalo', 'Grande');
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +57,14 @@ CREATE TABLE `dono` (
   `datanascimento` date DEFAULT NULL,
   `cpf` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `dono`
+--
+
+INSERT INTO `dono` (`id`, `nome`, `sexo`, `datanascimento`, `cpf`) VALUES
+(1, 'Rafael Ramos', 'Masculino', '2001-03-20', 2147483647),
+(2, 'Michelle Marciano', 'Feminino', '2005-04-17', 349861725);
 
 -- --------------------------------------------------------
 
@@ -100,6 +115,13 @@ CREATE TABLE `veterinario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Despejando dados para a tabela `veterinario`
+--
+
+INSERT INTO `veterinario` (`id`, `nome`, `cpf`, `sexo`, `datanascimento`) VALUES
+(1, 'Vitor Kleiton', 2147483647, 'Masculino', '1989-01-29');
+
+--
 -- Índices para tabelas despejadas
 --
 
@@ -146,13 +168,13 @@ ALTER TABLE `veterinario`
 -- AUTO_INCREMENT de tabela `animal`
 --
 ALTER TABLE `animal`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `dono`
 --
 ALTER TABLE `dono`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `servico`
@@ -170,7 +192,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `veterinario`
 --
 ALTER TABLE `veterinario`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para tabelas despejadas

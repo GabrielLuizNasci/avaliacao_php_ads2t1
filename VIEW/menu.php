@@ -1,3 +1,9 @@
+<?php
+  session_start(); 
+   if (!isset($_SESSION['login']))
+       Header("Location: ../index.php");   
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

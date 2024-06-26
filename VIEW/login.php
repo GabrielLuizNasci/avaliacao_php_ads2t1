@@ -1,27 +1,28 @@
 <?php 
-   include_once '../DAL/conexao.php'; 
+  include_once '../DAL/conexao.php'; 
 
-   $usuario = $_POST['usuario']; 
-   $senha = $_POST['senha'];
+  $usuario = $_POST['usuario']; 
+  $senha = $_POST['senha'];
 
-    $sql = "Select * from usuario where usuario=?;";
-    $con = \dal\Conexao::conectar(); 
-    $query = $con->prepare($sql);
+  $sql = "SELECT * FROM usuario WHERE usuario=?;";
+  $con = \DAL\Conexao::conectar(); 
+  $query = $con->prepare($sql);
 
-    try{
-      $query->execute (array($usuario));
-      $linha = $query->fetch(\PDO::FETCH_ASSOC);
-    }
+  try{
+    $query->execute([$usuario]);
+    $linha = $query->fetch(\PDO::FETCH_ASSOC);
+  }
     catch (Exception $e) { echo "usuario inexistente"; }
 
-    \dal\Conexao::desconectar(); 
+    \DAL\Conexao::desconectar(); 
 
-   if (md5($senha) == $linha['senha']){
+   if (password_verify($senha, $linha['senha'])){
        session_start();
        $_SESSION['login'] = $usuario ;
-       header("location:menu.php"); 
+       header("location: menu.php"); 
        exit();
    }
-   else header("location:index.php"); 
+   else header("location: index.php"); 
+   exit();
 
 ?>

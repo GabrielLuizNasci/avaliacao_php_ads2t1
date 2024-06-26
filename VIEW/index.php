@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- CSS em Arquivos -->
+    <link rel="stylesheet" href="../VIEW/css/style.css">
+
     <!------ Links do Bootsnip ---------->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     
+    
     <title>Pais de Pet</title>
-
-    <!-- CSS em Arquivos -->
-    <link rel="stylesheet" href="../VIEW/css/style.css">
     
 </head>
 
@@ -21,7 +22,7 @@
   <div class="container login-container">
     <div class="row">
       <div class="col-md-6 ads">
-        <img src="./assets/Veterinaria_logo.png" alt="profile_img">
+        <img src="./assets/Veterinaria_logo.png" alt="profile_img" height="100%">
       </div>
       <div class="col-md-6 login-form">
         <br></br>

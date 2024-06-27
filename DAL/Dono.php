@@ -1,89 +1,81 @@
 <?php
     namespace DAL;
-    include_once 'C:\Users\Rafael\Documents\GitHub\avaliacao_php_ads2t1\DAL\conexao.php';
-    include_once 'C:\Users\Rafael\Documents\GitHub\avaliacao_php_ads2t1\MODEL\Dono.php';
+    require_once __DIR__ . '/../autoload.php';
+    include_once __DIR__ . '/../DAL/conexao.php';
+    include_once __DIR__ . '/../MODEL/Dono.php';
+
+    use DAL\Conexao;
+    use MODEL\Dono as ModelDono;
 
     class Dono{
         private $conexao;
 
-        public function __construct() {
+        public function __construct(){
             $this->conexao = Conexao::conectar();
         }
 
-        public function __destruct() {
+        public function __destruct(){
             Conexao::desconectar();
         }
 
         public function Select(){
             $sql = "SELECT * FROM dono;";
-            $con = \DAL\Conexao::conectar();
-            $registros = $con->query($sql);
-            $con = \DAL\Conexao::desconectar();
+            $registros = $this->conexao->query($sql);
+            $lstDono = [];
 
             foreach ($registros as $linha){
-                $tutor = new \MODEL\Dono();
-                $tutor->setIdDono($linha['idDono']);
-                $tutor->setNome($linha['nome']);
-                $tutor->setSexo($linha['sexo']);
-                $tutor->setDataNasc($linha['dataNasc']);
-                $tutor->setCpf($linha['cpf']);
-                $lstTutor[] = $tutor;
+                $dono = new \MODEL\Dono();
+                $dono->setIdDono($linha['id']);
+                $dono->setNome($linha['nome']);
+                $dono->setSexo($linha['sexo']);
+                $dono->setDataNasc($linha['datanascimento']);
+                $dono->setCpf($linha['cpf']);
+                $lstDono[] = $dono;
             }
-            return $lstTutor;
+            return $lstDono;
 
         }
 
-        public function SelectById(int $idDono)
-        {
-            $sql = "Select * from dono where idDono=?;";
-            $con = Conexao::conectar();
-            $query = $con->prepare($sql);
-            $query->execute (array($id));
+        public function SelectById(int $id){
+            $sql = "SELECT * FROM dono WHERE id=?;";
+            $query = $this->conexao->prepare($sql);
+            $query->execute([$id]);
             $linha = $query->fetch(\PDO::FETCH_ASSOC);
-            Conexao::desconectar();
 
-            $tutor = new \MODEL\Dono();
-            $tutor->setIdDono($linha['idDono']);
-            $tutor->setNome($linha['nome']);
-            $tutor->setSexo($linha['sexo']);
-            $tutor->setDataNasc($linha['dataNasc']);
-            $tutor->setCpf($linha ['cpf']);
+            $dono = new \MODEL\Dono();
+            $dono->setIdDono($linha['id']);
+            $dono->setNome($linha['nome']);
+            $dono->setSexo($linha['sexo']);
+            $dono->setDataNasc($linha['dataNasc']);
+            $dono->setCpf($linha ['cpf']);
 
-            return $tutor;
-
-        }
-
-        public function Insert(\MODEL\Dono $dono){
-            $sql = "INSERT INTO dono (nome, sexo, dataNasc, cpf) VALUES ('{$dono->getNome()}','{$dono->getSexo()}','{$dono->getDataNasc()}','{$dono->getCpf()}');";
-
-            $con = Conexao::conectar();
-            $result = $con->query($sql);
-            $con = Conexao::desconectar();
-
-            return $result;
+            return $dono;
 
         }
 
-        public function Update (\MODEL\Dono $dono)
-        {
-            $sql = "UPDATE dono SET nome = ?, sexo = ?, dataNasc = ?, cpf = ?, WHERE idDono = ?;";
+        public function Insert(ModelDono $dono){
+            $sql = "INSERT INTO dono (nome, sexo, dataNasc, cpf) VALUES (?, ?, ?, ?)";
 
-            $con = Conexao::conectar();
-            $query = $con-.prepare($sql);
-            $result = $query->execute(array($dono->getNome(), $dono->getSexo(), $dono->getDataNasc(), $dono->getCpf(), $dono->getIdDono()));
-            $con = Conexao::desconectar();
+            $result = $this->conexao->prepare($sql);
+
+            return $result->execute([ $dono->getNome(), $dono->getSexo(), $dono->getDataNasc(), $dono->getCpf() ]);
+
+        }
+
+        public function Update(ModelDono $dono){
+            $sql = "UPDATE dono SET nome = ?, sexo = ?, dataNAsc = ?, cpf = ?, WHERE id = ?;";
+
+            $query = $this->conexao->prepare($sql);
+            $result = $query->execute([$dono->getNome(), $dono->getSexo(), $dono->getDataNasc(), $dono->getCpf(), $dono->getIdDono()]);
 
             return $result;
         }
 
-        public function Delete($idDono)
-        {
-            $sql = "delete from dono WHERE idDono = ?;";
+        public function Delete($id){
+            $sql = "DELETE FROM dono WHERE id = ?;";
 
-            $con = Conexao::conectar();
-            $query = $con->prepare($sql);
-            $result = $query->execute(array( $idDono ));
-            $con = Conexao::desconectar();
+            $query = $this->conexao->prepare($sql);
+            $result = $query->execute([ $id ]);
 
             return $result;
         }

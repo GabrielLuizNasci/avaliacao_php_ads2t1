@@ -1,3 +1,5 @@
+<?php require_once __DIR__ . '/../autoload.php'; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,10 +14,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    
-    
     <title>Pais de Pet</title>
-    
 </head>
 
 <body>
@@ -28,6 +27,11 @@
         <br></br>
         <br></br>
         <h3>Login</h3>
+
+        <?php if (isset($_GET['erro']) && $_GET['erro'] === '1'): ?>
+          <div class="alert alert-danger" role="alert">Usuário ou senha inválidos.</div>
+        <?php endif; ?>
+
         <form method="POST" action="login.php">
           <div class="form-group">
             <input type="text" class="form-control" name="usuario" placeholder="Usuário">
@@ -46,6 +50,6 @@
     </div>
   </div>
 
-  <?php include_once 'rodape.php' ?>
+  <?php include_once __DIR__ . '/includes/rodape.php'; ?>
 <body>
 </html>

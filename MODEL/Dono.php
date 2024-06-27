@@ -1,22 +1,21 @@
 <?php 
 namespace MODEL;
 
-    class Dono 
-    {
-        private ?int $idDono;
+    class Dono{
+        private ?int $id;
         private ?string $nome;
         private ?string $sexo;
-        private ?int $dataNasc;
+        private ?string $dataNasc;
         private ?int $cpf;
 
         public function __construct(){ }
 
         public function getIdDono(){
-            return $this->idDono;
+            return $this->id;
         }
 
-        public function setIdDono(int $idDono){
-            $this->idDono = $idDono;
+        public function setIdDono(int $id){
+            $this->id = $id;
         }
 
         public function getNome(){
@@ -39,7 +38,7 @@ namespace MODEL;
             return $this->dataNasc;
         }
 
-        public function setDataNasc(int $dataNasc){
+        public function setDataNasc(string $dataNasc){
          $this->dataNasc = $dataNasc;
         }
 

@@ -19,6 +19,4 @@
         header("location: listarDono.php");
       }
       else echo $result->errorInfo();
-  
-
 ?>

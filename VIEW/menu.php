@@ -27,11 +27,11 @@
          <div class="menu">
               <div class="data">
                    <ul>
-                        <li>Navegação</li>
-                        <li><a href="VIEW/Animal/listarAnimal.php">Animal</a></li>
-                        <li><a href="VIEW/Dono/listarDono.php">Donos</a></li>
-                        <li><a href="VIEW/Dono/listarVet.php">Veterinário</a></li>
-                        <li><a href="VIEW/Dono/listarServ.php">Serviço</a></li>
+                   <li>Navegação</li>
+                        <li><a href="Animal/listarAnimal.php">Animal</a></li>
+                        <li><a href="Dono/listarDono.php">Donos</a></li>
+                        <li><a href="Veterinario/listarVet.php">Veterinário</a></li>
+                        <li><a href="Servico/listarServ.php">Serviço</a></li>
                    </ul>
               </div>
          </div>

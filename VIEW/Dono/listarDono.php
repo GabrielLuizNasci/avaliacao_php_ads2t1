@@ -48,7 +48,7 @@
                         <td><?php echo $dono->getDataNasc(); ?></td>
                         <td><?php echo $dono->getCpf(); ?></td>
                         <td>
-                            <a href="editarDono.php?id=<?php echo $dono->getIdDono(); ?>">Editar</a> | 
+                            <a href="formUpdateDono.php?id=<?php echo $dono->getIdDono(); ?>">Editar</a> | 
                             <a href="excluirDono.php?id=<?php echo $dono->getIdDono(); ?>" onclick="return confirm('Tem certeza que deseja excluir este dono?')">Excluir</a> 
                         </td>
                     </tr>

@@ -1,14 +1,21 @@
 <?php
     namespace DAL;
-    include_once 'C:\Users\Rafael\Documents\GitHub\avaliacao_php_ads2t1\DAL\conexao.php';
-    include_once 'C:\Users\Rafael\Documents\GitHub\avaliacao_php_ads2t1\MODEL\Dono.php';
+    include_once __DIR__ . '/../DAL/conexao.php';
+    include_once __DIR__ . '/../MODEL/Dono.php';
 
-    class Dono 
-    {
-        public function Select()
-        {
+    class Dono{
+        private $conexao;
 
-            $sql = "Select * from dono;";
+        public function __construct() {
+            $this->conexao = Conexao::conectar();
+        }
+
+        public function __destruct() {
+            Conexao::desconectar();
+        }
+
+        public function Select(){
+            $sql = "SELECT * FROM dono;";
             $con = \DAL\Conexao::conectar();
             $registros = $con->query($sql);
             $con = \DAL\Conexao::desconectar();

@@ -1,7 +1,7 @@
 <?php
     namespace DAL;
-    include_once 'D:\xampp\htdocs\avaliacao_php_ads2t1\DAL\conexao.php';
-    include_once 'D:\xampp\htdocs\avaliacao_php_ads2t1\MODEL\Animal.php';
+    include_once 'C:\Users\Rafael\Documents\GitHub\avaliacao_php_ads2t1\DAL\conexao.php';
+    include_once 'C:\Users\Rafael\Documents\GitHub\avaliacao_php_ads2t1\MODEL\Animal.php';
 
     class Animal{
         public function Select(){

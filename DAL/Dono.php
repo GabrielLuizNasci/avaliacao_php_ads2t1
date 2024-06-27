@@ -1,7 +1,7 @@
 <?php
     namespace DAL;
-    include_once __DIR__ . '/../DAL/conexao.php';
-    include_once __DIR__ . '/../MODEL/Dono.php';
+    include_once 'C:\Users\Rafael\Documents\GitHub\avaliacao_php_ads2t1\DAL\conexao.php';
+    include_once 'C:\Users\Rafael\Documents\GitHub\avaliacao_php_ads2t1\MODEL\Dono.php';
 
     class Dono{
         private $conexao;
@@ -66,7 +66,7 @@
 
         public function Update (\MODEL\Dono $dono)
         {
-            $sql = "UPDATE dono SET nome = ?, sexo = ?, dataNAsc = ?, cpf = ?, WHERE idDono = ?;";
+            $sql = "UPDATE dono SET nome = ?, sexo = ?, dataNasc = ?, cpf = ?, WHERE idDono = ?;";
 
             $con = Conexao::conectar();
             $query = $con-.prepare($sql);

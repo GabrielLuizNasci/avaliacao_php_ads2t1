@@ -1,33 +1,39 @@
 <?php
-    namespace BLL;
-    include_once 'D:\xampp\htdocs\avaliacao_php_ads2t1\DAL\Animal.php';
-    use DAL;
+namespace BLL;
+include_once 'C:\Users\Rafael\Documents\GitHub\avaliacao_php_ads2t1\DAL\Animal.php';
+use DAL;
 
-    class Animal{
-        public function Select(){
-            $dalAnimal = new \Dal\Animal();
-            return $dalAnimal->Select();
-        }
-
-        public function SelectById(int $id){
-            $dalAnimal = new \DAL\Animal();
-            return $dalAnimal->SelectById($id);
-        }
-
-        public function Insert(\MODEL\Animal $animal){
-            $dalAnimal = new \DAL\Animal();
-            return $dalAnimal->Insert($animal);
-        }
-        
-        public function Update(\MODEL\Animal $animal){
-            $dalAnimal = new \DAL\Animal();
-            return $dalAnimal->Update($animal);
-        } 
-        
-        public function Delete(int $id){
-            $dalAnml = new \DAL\Animal();
-            return $dalAnml->Delete($id);
-        }
-        
+class Animal
+{
+    public function Select()
+    {
+        $dalAnml = new \Dal\Animal();
+        return $dalAnml->Select();
     }
+
+    public function SelectById(int $id)
+    {
+        $dalAnml = new \DAL\Animal();
+        return $dalAnimal->SelectById($id);
+    }
+
+    public function Insert(\MODEL\Animal $animal)
+    {
+        $dalAnml = new \DAL\Animal();
+        return $dalAnml->Insert($animal);
+    }
+    
+    public function Update(\MODEL\Animal $animal)
+    {
+        $dalAnml = new \DAL\Animal();
+        return $dalAnml->Update($animal);
+    } 
+    
+    public function Delete(int $id)
+    {
+        $dalAnml = new \DAL\Animal();
+        return $dalAnml->Delete($id);
+    }
+    
+}
 ?>
